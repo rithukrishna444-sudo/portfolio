@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KRISH — ECE Student | C++, HFT & Embedded Systems</title>
+  <meta name="description" content="KRISH's portfolio — Electronics & Communication Engineering student passionate about low-latency C++, HFT systems, and embedded hardware." />
+  <meta name="keywords" content="KRISH, ECE, C++, HFT, High Frequency Trading, Embedded Systems, STM32, Low Latency, FPGA, Verilog, FreeRTOS" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Custom Cursor ===== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ===== Particle Canvas ===== -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <span class="loader__text">Loading&hellip;</span>
+    </div>
+  </div>
+
+  <!-- ===== Scroll Progress Bar ===== -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- ===== Cyber Scanline ===== -->
+  <div class="cyber-scanline"></div>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo" id="navLogo">K<span>.</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#home" class="nav__link active" data-section="home">Home</a></li>
+      <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+      <li><a href="#projects" class="nav__link" data-section="projects">Projects</a></li>
+      <li><a href="#skills" class="nav__link" data-section="skills">Skills</a></li>
+      <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== Mobile Menu Overlay ===== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__links">
+      <li><a href="#home" class="mobile-menu__link" data-section="home">Home</a></li>
+      <li><a href="#about" class="mobile-menu__link" data-section="about">About</a></li>
+      <li><a href="#projects" class="mobile-menu__link" data-section="projects">Projects</a></li>
+      <li><a href="#skills" class="mobile-menu__link" data-section="skills">Skills</a></li>
+      <li><a href="#contact" class="mobile-menu__link" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero" id="home">
+    <div class="hero__content">
+      <div class="hero__badge reveal-text">
+        <span class="badge__dot"></span>
+        <span class="badge__text">SYS // ECE &bull; LOW-LATENCY C++ &bull; FPGA &bull; EMBEDDED</span>
+        <span class="badge__ticker" id="latencyTicker">&lt; 118 ns</span>
+      </div>
+      <p class="hero__greeting reveal-text">
+        <span class="hero__wave">👋</span> Hello, I'm
+      </p>
+      <h1 class="hero__name glitch" data-text="KRISH">KRISH</h1>
+      <div class="hero__title-wrapper">
+        <span class="hero__title-prefix">An&nbsp;</span>
+        <span class="hero__typed" id="typedText"></span>
+        <span class="hero__cursor">|</span>
+      </div>
+      <p class="hero__description reveal-text">
+        Electronics &amp; Communication Engineering student specializing in high-performance C++20/23, low-latency HFT trading architectures, and bare-metal embedded systems.
+      </p>
+      <div class="hero__cta reveal-text">
+        <a href="#projects" class="btn btn--primary" id="heroCtaProjects">
+          <span>Explore Systems</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--outline" id="heroCtaContact">
+          <span>Get In Touch</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+      <div class="hero__3d-shape" id="hero3dShape">
+        <div class="gyro-ring gyro-ring--1"></div>
+        <div class="gyro-ring gyro-ring--2"></div>
+        <div class="gyro-ring gyro-ring--3"></div>
+        <div class="cube">
+          <div class="cube__face cube__face--front"><span>C++23</span></div>
+          <div class="cube__face cube__face--back"><span>FPGA</span></div>
+          <div class="cube__face cube__face--right"><span>HFT</span></div>
+          <div class="cube__face cube__face--left"><span>RTOS</span></div>
+          <div class="cube__face cube__face--top"><span>STM32</span></div>
+          <div class="cube__face cube__face--bottom"><span>CAN</span></div>
+        </div>
+        <div class="float-tag float-tag--1">CLOCK: 4.8 GHz</div>
+        <div class="float-tag float-tag--2">ZERO-COPY SPSC</div>
+        <div class="float-tag float-tag--3">CACHE L1: 99.8%</div>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" id="heroScroll" aria-label="Scroll to about section">
+      <div class="hero__scroll-mouse">
+        <div class="hero__scroll-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </a>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <h2 class="section__title reveal-up">
+        <span class="section__number">01.</span> About Me
+      </h2>
+      <div class="about__grid">
+        <div class="about__text reveal-up">
+          <p>
+            I am an Electronics &amp; Communication Engineering (ECE) undergraduate deeply fascinated by the convergence of hardware architectures, low-level operating system internals, and ultra-low-latency computing.
+          </p>
+          <p>
+            My passion lies in writing deterministic, cache-friendly C++ systems for High-Frequency Trading (HFT) simulations—maximizing throughput and minimizing nanosecond jitter. Concurrently, I build firmware for microcontrollers (STM32, ARM Cortex) and experiment with digital logic synthesis on FPGAs.
+          </p>
+          <p>
+            When I'm not profiling CPU cache misses or debugging hardware protocols like SPI, I2C, and CAN, you'll find me exploring computer architecture, OS kernels, and quantitative finance concepts.
+          </p>
+        </div>
+        <div class="about__stats reveal-up">
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="15">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Systems &amp; Embedded Projects</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="99">0</span><span class="stat-card__plus">%</span>
+            <span class="stat-card__label">Deterministic Low Jitter</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="8">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Hardware Protocols &amp; MCUs</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-card__number" data-target="250">0</span><span class="stat-card__plus">+</span>
+            <span class="stat-card__label">Nanosecond Latency Benchmarks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects Section ===== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <h2 class="section__title reveal-up">
+        <span class="section__number">02.</span> Featured Projects
+      </h2>
+      <div class="projects__filter reveal-up" id="projectFilter">
+        <button class="filter-btn active" data-filter="all">All Systems</button>
+        <button class="filter-btn" data-filter="cxx-hft">C++ &amp; HFT</button>
+        <button class="filter-btn" data-filter="embedded">Embedded &amp; Firmware</button>
+        <button class="filter-btn" data-filter="fpga">Hardware &amp; FPGA</button>
+      </div>
+      <div class="projects__grid" id="projectsGrid">
+
+        <!-- Project 1 -->
+        <article class="project-card glass-card reveal-up" data-category="cxx-hft" id="project1">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #00f0ff33, #6c5ce766);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,240,255,0.8)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View system architecture">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View source code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Low-Latency HFT Matching Engine</h3>
+            <p class="project-card__desc">A deterministic limit order book written in C++20 with price-time priority matching, lock-free SPSC queues, memory pools, and sub-150ns critical path latency.</p>
+            <div class="project-card__tags">
+              <span class="tag">C++20</span>
+              <span class="tag">Lock-Free</span>
+              <span class="tag">Cache-Aligned</span>
+              <span class="tag">Linux perf</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card glass-card reveal-up" data-category="embedded" id="project2">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #00ff8833, #00b4d844);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,255,136,0.8)" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View project demo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View firmware source code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">STM32 Flight Stabilization Controller</h3>
+            <p class="project-card__desc">Bare-metal and FreeRTOS flight firmware running 1kHz control loops, Kalman filter sensor fusion over SPI (MPU6050), and DMA-driven PWM motor mixing.</p>
+            <div class="project-card__tags">
+              <span class="tag">STM32</span>
+              <span class="tag">FreeRTOS</span>
+              <span class="tag">Embedded C++</span>
+              <span class="tag">SPI / DMA</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card glass-card reveal-up" data-category="fpga" id="project3">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #b14eff33, #ff6b9d44);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(177,78,255,0.8)" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View architecture">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View Verilog code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">FPGA Line-Rate Market Data Parser</h3>
+            <p class="project-card__desc">Hardware-accelerated market data feed parser implemented on Xilinx Artix-7. Performs line-rate UDP framing, packet unrolling, and zero-copy dispatching in RTL.</p>
+            <div class="project-card__tags">
+              <span class="tag">Verilog</span>
+              <span class="tag">Xilinx Vivado</span>
+              <span class="tag">AXI-Stream</span>
+              <span class="tag">Ethernet MAC</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card glass-card reveal-up" data-category="cxx-hft" id="project4">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #ffd60a33, #00f0ff44);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,214,10,0.8)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View benchmarks">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View source code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Deterministic Memory Arena &amp; Pools</h3>
+            <p class="project-card__desc">A specialized high-throughput memory allocator avoiding OS page faults and dynamic malloc latency during peak trading ticks, with cache line alignment.</p>
+            <div class="project-card__tags">
+              <span class="tag">C++17/20</span>
+              <span class="tag">Memory Arenas</span>
+              <span class="tag">Valgrind</span>
+              <span class="tag">Benchmarking</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card glass-card reveal-up" data-category="embedded" id="project5">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #06b6d433, #8b5cf644);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(6,182,212,0.8)" stroke-width="1.5"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H8.5a1 1 0 0 0-.8.4L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View demo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View source code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Automotive CAN Bus Telemetry Logger</h3>
+            <p class="project-card__desc">High-speed CAN 2.0B vehicle telemetry node on ARM Cortex-M4 with interrupt-driven ring buffers, SD-card logging, and real-time UART telemetry stream.</p>
+            <div class="project-card__tags">
+              <span class="tag">ARM Cortex-M</span>
+              <span class="tag">CAN Bus</span>
+              <span class="tag">Bare-Metal</span>
+              <span class="tag">DMA</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card glass-card reveal-up" data-category="fpga" id="project6">
+          <div class="project-card__image">
+            <div class="project-card__placeholder" style="background: linear-gradient(135deg, #ec489933, #00f0ff44);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(236,72,153,0.8)" stroke-width="1.5"><path d="M2 10s3-3 5-3 5 6 7 6 5-6 7-6 1 3 1 3"/><line x1="2" y1="14" x2="22" y2="14"/></svg>
+            </div>
+            <div class="project-card__overlay">
+              <a href="#" class="project-card__link" aria-label="View demo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="#" class="project-card__link" aria-label="View Verilog code">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Real-Time FPGA Audio DSP Processor</h3>
+            <p class="project-card__desc">Digital signal processing unit on FPGA implementing real-time 32-tap FIR filtering and wavetable synthesis using fixed-point arithmetic with 24-bit I2S output.</p>
+            <div class="project-card__tags">
+              <span class="tag">Verilog</span>
+              <span class="tag">DSP Architecture</span>
+              <span class="tag">I2S Audio</span>
+              <span class="tag">Fixed-Point</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills Section ===== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <h2 class="section__title reveal-up">
+        <span class="section__number">03.</span> Skills & Tools
+      </h2>
+      <div class="skills__grid">
+
+        <div class="skill-card glass-card reveal-up" id="skillCpp">
+          <div class="skill-card__icon" style="--accent: #00599c;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/><line x1="12" y1="4" x2="12" y2="8"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="12" y1="16" x2="12" y2="20"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+          </div>
+          <h3 class="skill-card__name">Modern C++ (20/23)</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="92"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillEmbeddedC">
+          <div class="skill-card__icon" style="--accent: #00f0ff;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/></svg>
+          </div>
+          <h3 class="skill-card__name">Embedded C / Bare-Metal</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="90"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillLowLatency">
+          <div class="skill-card__icon" style="--accent: #ffd60a;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="skill-card__name">Low-Latency / HFT Design</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="86"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillStm32">
+          <div class="skill-card__icon" style="--accent: #00b4d8;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h3v3H7z"/><path d="M14 7h3v3h-3z"/><path d="M7 14h3v3H7z"/><path d="M14 14h3v3h-3z"/></svg>
+          </div>
+          <h3 class="skill-card__name">ARM Cortex &amp; STM32</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="88"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillRtos">
+          <div class="skill-card__icon" style="--accent: #00ff88;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="skill-card__name">Real-Time OS (FreeRTOS)</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="84"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillFpga">
+          <div class="skill-card__icon" style="--accent: #b14eff;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3 class="skill-card__name">FPGA &amp; Verilog (RTL)</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="80"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillProtocols">
+          <div class="skill-card__icon" style="--accent: #ff6b9d;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+          </div>
+          <h3 class="skill-card__name">SPI, I2C, CAN &amp; UART</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="87"></div></div>
+        </div>
+
+        <div class="skill-card glass-card reveal-up" id="skillTooling">
+          <div class="skill-card__icon" style="--accent: #f1502f;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          </div>
+          <h3 class="skill-card__name">Linux Profiling (perf, GDB)</h3>
+          <div class="skill-card__bar"><div class="skill-card__fill" data-width="85"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact Section ===== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section__title reveal-up">
+        <span class="section__number">04.</span> Get In Touch
+      </h2>
+      <p class="contact__subtitle reveal-up">
+        Have a project in mind or just want to say hi? My inbox is always open.
+      </p>
+      <div class="contact__grid">
+        <form class="contact__form glass-card reveal-up" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="contactName" class="form-input" placeholder=" " required autocomplete="name" />
+            <label for="contactName" class="form-label">Your Name</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="contactEmail" class="form-input" placeholder=" " required autocomplete="email" />
+            <label for="contactEmail" class="form-label">Your Email</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <textarea id="contactMessage" class="form-input form-textarea" placeholder=" " required rows="5"></textarea>
+            <label for="contactMessage" class="form-label">Your Message</label>
+            <div class="form-line"></div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full" id="contactSubmit">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="contact__success" id="contactSuccess">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <p>Message sent successfully!</p>
+          </div>
+        </form>
+        <div class="contact__info reveal-up">
+          <div class="contact__info-card glass-card">
+            <div class="contact__info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>rithukrishna444@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact__info-card glass-card">
+            <div class="contact__info-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>India</p>
+            </div>
+          </div>
+          <div class="contact__socials">
+            <a href="#" class="social-link" id="socialGithub" aria-label="GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="social-link" id="socialLinkedin" aria-label="LinkedIn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-link" id="socialTwitter" aria-label="Twitter / X">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <p class="footer__text">
+        Designed & Built by <span class="footer__name">KRISH</span> &copy; <span id="footerYear">2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
